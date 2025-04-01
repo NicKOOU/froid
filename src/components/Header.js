@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <header className="header">
-            <div className="logo">冷库安装专家</div>
+            <Link to="/" className="logo">冷库安装专家</Link>
             <nav>
                 <ul>
-                    <li><Link to="/">首页</Link></li>
                     <li><Link to="/about">关于我们</Link></li>
                     <li><Link to="/services">服务</Link></li>
                     <li><Link to="/projects">项目案例</Link></li>

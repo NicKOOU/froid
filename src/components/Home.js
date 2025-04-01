@@ -1,10 +1,40 @@
 import React from 'react';
-import heroImage from '../assets/project1.jpg'; // Ajoute une image dans src/assets/
+import Particles from 'react-particles';
+import { loadSlim } from 'tsparticles-slim';
+import heroImage from '../assets/project1.jpg';
 
 function Home() {
+    const particlesInit = async (engine) => {
+        await loadSlim(engine);
+    };
+
     return (
         <div className="home">
             <div className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
+                <Particles
+                    id="tsparticles"
+                    init={particlesInit}
+                    options={{
+                        particles: {
+                            number: { value: 100 },
+                            color: { value: '#fff' },
+                            shape: { type: 'circle' },
+                            opacity: { value: 0.7 },
+                            size: { value: 4, random: true },
+                            move: {
+                                enable: true,
+                                speed: 1,
+                                direction: 'bottom',
+                                random: true,
+                            },
+                        },
+                        interactivity: {
+                            events: { onHover: { enable: true, mode: 'repulse' } },
+                            modes: { repulse: { distance: 100 } },
+                        },
+                    }}
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                />
                 <div className="hero-overlay">
                     <h1>专业冷库安装服务</h1>
                     <p>高效 · 节能 · 可靠 - 您的冷链专家</p>
