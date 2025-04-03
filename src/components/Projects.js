@@ -1,46 +1,45 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Slider from 'react-slick';
-import project1 from '../assets/project1.jpg';
-import project2 from '../assets/project1.jpg';
-import project3 from '../assets/project1.jpg';
-import project4 from '../assets/project1.jpg';
+import Slider from 'react-slick'; // Import de react-slick pour le carrousel
+import projectImage from '../assets/project1.jpg'; // Import unique de l'image (à adapter si tu as plusieurs images)
 
 function Projects() {
+    const [selectedProject, setSelectedProject] = useState(null);
+
+    // Données des projets
     const projects = [
         {
             id: 1,
             title: '食品冷库 - 上海',
             desc: '高效冷冻食品储存解决方案',
-            img: project1,
-            gallery: [project1, project1, project1],
+            img: projectImage,
+            gallery: [projectImage, projectImage, projectImage],
         },
         {
             id: 2,
             title: '工业冷库 - 北京',
             desc: '大规模工业冷藏设施',
-            img: project2,
-            gallery: [project2, project1, project1],
+            img: projectImage,
+            gallery: [projectImage, projectImage, projectImage],
         },
         {
             id: 3,
             title: '商业冷库 - 广州',
             desc: '商业用途的冷链支持',
-            img: project3,
-            gallery: [project3, project1, project1],
+            img: projectImage,
+            gallery: [projectImage, projectImage, projectImage],
         },
         {
             id: 4,
             title: '物流冷库 - 深圳',
             desc: '物流中心的冷链优化',
-            img: project4,
-            gallery: [project4, project1, project1],
+            img: projectImage,
+            gallery: [projectImage, projectImage, projectImage],
         },
     ];
 
-    const [selectedProject, setSelectedProject] = useState(null);
-
-    const settings = {
+    // Configuration du carrousel
+    const sliderSettings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -51,20 +50,23 @@ function Projects() {
 
     return (
         <section className="projects">
+            {/* Titre avec animation simple */}
             <motion.h2
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
             >
                 项目案例
             </motion.h2>
+
+            {/* Galerie de projets */}
             <div className="projects-gallery">
                 {projects.map((project) => (
                     <motion.div
                         key={project.id}
                         className="project-item"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4 }}
                         onClick={() => setSelectedProject(project)}
                     >
@@ -77,18 +79,31 @@ function Projects() {
                 ))}
             </div>
 
-            {/* Carrousel Pop-up */}
+            {/* Modal du carrousel */}
             {selectedProject && (
-                <div className="carousel-modal" onClick={() => setSelectedProject(null)}>
-                    <div className="carousel-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="close-button" onClick={() => setSelectedProject(null)}>
+                <div
+                    className="carousel-modal"
+                    onClick={() => setSelectedProject(null)}
+                >
+                    <div
+                        className="carousel-content"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            className="close-button"
+                            onClick={() => setSelectedProject(null)}
+                        >
                             ✕
                         </button>
                         <h3>{selectedProject.title}</h3>
-                        <Slider {...settings}>
+                        <Slider {...sliderSettings}>
                             {selectedProject.gallery.map((image, index) => (
                                 <div key={index}>
-                                    <img src={image} alt={`${selectedProject.title} - ${index}`} className="carousel-image" />
+                                    <img
+                                        src={image}
+                                        alt={`${selectedProject.title} - ${index + 1}`}
+                                        className="carousel-image"
+                                    />
                                 </div>
                             ))}
                         </Slider>
