@@ -36,7 +36,7 @@ function Home() {
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                 />
                 <div className="hero-overlay">
-                    <h1>专业冷库安装服务</h1>
+                    <h1>泰州优库冷库设备有限公司</h1>
                     <p>高效 · 节能 · 可靠 - 您的冷链专家</p>
                     <button className="cta-button">立即咨询</button>
                 </div>

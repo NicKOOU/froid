@@ -715,27 +715,28 @@ nav a:hover {
 
 /* Footer */
 .footer {
-    background: linear-gradient(135deg, rgba(1, 87, 155, 0.85), rgba(64, 196, 255, 0.65));
-    color: #fff;
-    padding: 50px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(55, 181, 249, 0.1));
+    color: #154890;
+    padding: 30px 20px;
+    /* Réduit de 60px à 30px */
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
-    /* Effet glassmorphism cohérent avec le header */
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(55, 181, 249, 0.3);
     margin-top: auto;
-    z-index: 1;
+    box-shadow: 0 -2px 10px rgba(21, 72, 144, 0.1);
+    /* Ombre légèrement réduite */
 }
 
 .footer::before {
     content: '';
     position: absolute;
-    top: -30%;
-    left: -30%;
-    width: 160%;
-    height: 160%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 5%, transparent 50%);
-    animation: subtleGlow 8s infinite ease-in-out;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(55, 181, 249, 0.15) 5%, transparent 50%);
+    animation: glow 10s infinite ease-in-out;
     z-index: -1;
 }
 
@@ -743,59 +744,123 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
-    /* Espacement moderne */
+    gap: 15px;
+    /* Réduit de 30px à 15px */
+    max-width: 1000px;
+    /* Réduit de 1200px à 1000px */
+    margin: 0 auto;
 }
 
 .footer p {
     margin: 0;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 14px;
+    /* Réduit de 18px à 14px */
+    font-weight: 500;
     letter-spacing: 0.5px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
     transition: color 0.3s ease;
 }
 
 .footer p:hover {
-    color: #E2E8F0;
+    color: #37B5F9;
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    /* Plus d'espace entre les icônes */
+    align-items: center;
+    gap: 20px;
+    /* Réduit de 35px à 20px */
 }
 
 .social-link {
-    color: #fff;
-    font-size: 30px;
+    color: #154890;
+    font-size: 24px;
+    /* Réduit de 32px à 24px */
     text-decoration: none;
-    padding: 10px;
+    padding: 8px;
+    /* Réduit de 12px à 8px */
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(55, 181, 249, 0.1);
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-link:hover {
-    color: #E2E8F0;
-    transform: scale(1.15) translateY(-2px);
-    background: rgba(255 *255, 255, 255, 0.2);
-    box-shadow: 0 4px 12px rgba(64, 196, 255, 0.3);
+    color: #FFFFFF;
+    background: #37B5F9;
+    transform: scale(1.1) translateY(-2px);
+    /* Légère réduction du mouvement */
+    box-shadow: 0 3px 10px rgba(55, 181, 249, 0.5);
+    /* Ombre légèrement réduite */
 }
 
 .wechat-qr {
-    width: 90px;
-    height: 90px;
-    border-radius: 12px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    transition: transform 0.3s ease;
+    width: 70px;
+    /* Réduit de 100px à 70px */
+    height: 70px;
+    border-radius: 10px;
+    /* Réduit de 15px à 10px */
+    border: 2px solid rgba(55, 181, 249, 0.4);
+    transition: all 0.3s ease;
 }
 
 .wechat-qr:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    border-color: #37B5F9;
+    box-shadow: 0 3px 10px rgba(55, 181, 249, 0.3);
+    /* Ombre réduite */
 }
 
+/* Animation moderne */
+@keyframes glow {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(5%, 5%) scale(1.02);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 15px;
+        /* Réduit de 40px à 20px */
+    }
+
+    .footer p {
+        font-size: 12px;
+        /* Réduit de 16px à 12px */
+    }
+
+    .social-link {
+        font-size: 20px;
+        /* Réduit de 28px à 20px */
+        padding: 6px;
+        /* Réduit de 10px à 6px */
+    }
+
+    .wechat-qr {
+        width: 60px;
+        /* Réduit de 80px à 60px */
+        height: 60px;
+    }
+
+    .social-icons {
+        gap: 15px;
+        /* Réduit de 20px à 15px */
+    }
+}
 /* Nouvelle animation plus subtile */
 @keyframes subtleGlow {
     0% {
