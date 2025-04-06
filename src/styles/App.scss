@@ -17,28 +17,25 @@ body {
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, rgba(1, 87, 155, 0.9), rgba(64, 196, 255, 0.7));
+    background: linear-gradient(135deg, #FFFFFF 0%, rgba(55, 181, 249, 0.7) 100%);
     backdrop-filter: blur(10px);
-    /* Effet glassmorphism */
     padding: 20px 40px;
     display: flex;
     justify-content: space-between;
-    /* Logo à gauche, nav centré globalement */
     align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(1, 87, 155, 0.2);
+    box-shadow: 0 4px 20px rgba(55, 181, 249, 0.2);
     transition: all 0.3s ease;
 }
 
 .header.scrolled {
     padding: 15px 40px;
-    /* Rétrécit au scroll */
-    background: linear-gradient(135deg, rgba(1, 87, 155, 0.95), rgba(64, 196, 255, 0.85));
-    box-shadow: 0 6px 25px rgba(1, 87, 155, 0.3);
+    background: linear-gradient(135deg, #FFFFFF 0%, rgba(55, 181, 249, 0.85) 100%);
+    box-shadow: 0 6px 25px rgba(55, 181, 249, 0.3);
 }
 
 .header::before {
@@ -48,80 +45,91 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1), transparent 50%);
+    background: radial-gradient(circle at 30% 70%, rgba(21, 72, 144, 0.1), transparent 50%);
     animation: wave 15s infinite ease-in-out;
     z-index: -1;
 }
 
 .logo {
-    color: #fff;
-    font-size: 32px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    position: relative;
     transition: all 0.3s ease;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(21, 72, 144, 0.3);
 }
 
-.logo::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -8px;
-    left: 0;
-    background: linear-gradient(to right, #40C4FF, #E2E8F0);
-    transition: width 0.3s ease;
-}
-
-.logo:hover::after {
-    width: 100%;
+.logo-image {
+    max-width: 100px;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: brightness(1.1);
 }
 
 .logo:hover {
     transform: scale(1.05);
-    text-shadow: 0 0 15px rgba(64, 196, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(55, 181, 249, 0.5);
+}
+
+.logo:hover .logo-image {
+    filter: brightness(1.2) drop-shadow(0 0 10px rgba(55, 181, 249, 0.8));
+}
+
+.logo::after {
+    content: none;
 }
 
 nav {
     flex-grow: 1;
-    /* Permet au nav de prendre l'espace disponible */
+    /* Prend l’espace disponible */
     display: flex;
     justify-content: center;
-    /* Centre les liens */
+    /* Centre les liens horizontalement */
+    align-items: center;
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    flex-direction: row;
     margin: 0;
     padding: 0;
-    align-items: center;
-    /* Alignement vertical au centre */
+    gap: 30px;
+    /* Plus d’espace entre les liens pour un look aéré */
 }
 
 nav li {
-    margin: 0 20px;
-    /* Espacement horizontal uniforme */
+    margin: 0;
 }
 
 nav a {
-    color: #fff;
+    color: #154890;
     text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 22px;
+    /* Police agrandie pour plus de présence */
+    font-weight: 600;
+    /* Plus épais pour se démarquer */
     position: relative;
-    padding: 5px 10px;
+    padding: 8px 15px;
+    /* Plus de padding pour les rendre plus imposants */
     transition: all 0.3s ease;
     display: block;
-    /* Assure une hauteur uniforme */
+    text-shadow: 0 1px 3px rgba(21, 72, 144, 0.2);
+    /* Ombre subtile pour contraste */
 }
 
 nav a.active {
-    color: #FF4D4F;
-    /* Rouge pour indiquer la page active */
+    color: #FFFFFF;
+    /* Blanc pour l’actif, contraste maximal */
     font-weight: 700;
+    background: #154890;
+    /* Fond bleu foncé du logo */
+    border-radius: 25px;
+    /* Plus arrondi pour un look moderne */
+    box-shadow: 0 2px 10px rgba(21, 72, 144, 0.4);
+    /* Ombre pour le mettre en avant */
 }
 
 nav a::before {
@@ -131,8 +139,9 @@ nav a::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    background: rgba(55, 181, 249, 0.2);
+    /* Bleu clair au survol */
+    border-radius: 25px;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -144,8 +153,12 @@ nav a:hover::before {
 }
 
 nav a:hover {
-    color: #E2E8F0;
-    transform: translateY(-2px);
+    color: #37B5F9;
+    /* Bleu clair du logo au survol */
+    transform: translateY(-3px);
+    /* Plus de mouvement pour se démarquer */
+    box-shadow: 0 4px 12px rgba(55, 181, 249, 0.3);
+    /* Ombre au survol */
 }
 
 /* Animation vague */
@@ -167,45 +180,25 @@ nav a:hover {
 @media (max-width: 768px) {
     .header {
         padding: 15px 10px;
-        /* Réduit le padding sur mobile */
     }
 
     .header.scrolled {
         padding: 10px 10px;
     }
 
-    .logo {
-        font-size: 24px;
-        /* Réduit légèrement la taille du logo */
-    }
-
-    nav {
-        flex-grow: 1;
+    .logo-image {
+        max-width: 80px;
     }
 
     nav ul {
-        display: flex;
-        flex-wrap: nowrap;
-        /* Reste en ligne horizontale */
-        justify-content: center;
-        align-items: center;
-        /* Alignement vertical strict */
-        gap: 8px;
-        /* Espacement réduit et uniforme */
-    }
-
-    nav li {
-        margin: 0 8px;
-        /* Espacement horizontal réduit */
+        gap: 15px;
+        /* Espacement réduit mais suffisant sur mobile */
     }
 
     nav a {
-        font-size: 14px;
-        /* Texte plus petit pour mobile */
-        padding: 4px 6px;
-        /* Padding ajusté pour uniformité */
-        line-height: 1;
-        /* Hauteur de ligne fixe pour alignement */
+        font-size: 16px;
+        /* Taille réduite sur mobile mais encore lisible */
+        padding: 6px 10px;
     }
 }
 

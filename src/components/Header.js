@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/youkuv1.png';
 
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -14,7 +15,9 @@ function Header() {
 
     return (
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-            <Link to="/" className="logo">冷库安装专家</Link>
+            <Link to="/" className="logo">
+                <img src={logo} alt="Logo" className="logo-image" />
+            </Link>
             <nav>
                 <ul>
                     <li><Link to="/">首页</Link></li>
