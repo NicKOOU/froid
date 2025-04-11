@@ -4,7 +4,7 @@ import contactBg from '../assets/project1.jpg'; // Ajoute une image dans src/ass
 
 function Contact() {
     return (
-        <section className="contact" style={{ backgroundImage: `url(${contactBg})` }}>
+        <section className="contact">
             <div className="contact-overlay">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
@@ -33,9 +33,15 @@ function Contact() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <p>📞 电话: +86 123-456-7890</p>
-                    <p>✉️ 邮箱: info@coolinstall.cn</p>
-                    <p>📍 地址: 中国上海市冷库路88号</p>
+                    <div className="contact-info-item">
+                        <p>📞 电话: +86 123-456-7890</p>
+                    </div>
+                    <div className="contact-info-item">
+                        <p>✉️ 邮箱: info@coolinstall.cn</p>
+                    </div>
+                    <div className="contact-info-item">
+                        <p>📍 地址: 中国上海市冷库路88号</p>
+                    </div>
                 </motion.div>
             </div>
         </section>

@@ -5,6 +5,9 @@ import { loadSlim } from 'tsparticles-slim';
 import Slider from 'react-slick';
 import heroImage from '../assets/project1.jpg';
 import projectImage from '../assets/project1.jpg';
+import projectImage2 from '../assets/project2.jpg';
+import projectImage3 from '../assets/project3.jpeg';
+import chinaMap from '../assets/chinaMap.jpg';
 
 function Home() {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -25,15 +28,15 @@ function Home() {
             id: 2,
             title: '工业冷库 - 北京',
             desc: '大规模工业冷藏设施',
-            img: projectImage,
-            gallery: [projectImage, projectImage, projectImage]
+            img: projectImage2,
+            gallery: [projectImage2, projectImage2, projectImage2]
         },
         {
             id: 3,
             title: '医药冷库 - 广州',
             desc: '医药冷链储存解决方案',
-            img: projectImage,
-            gallery: [projectImage, projectImage, projectImage]
+            img: projectImage3,
+            gallery: [projectImage3, projectImage3, projectImage3]
         }
     ];
 
@@ -87,9 +90,14 @@ function Home() {
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                 />
                 <div className="hero-overlay">
-                    <h1>泰州优库冷库设备有限公司</h1>
-                    <p>高效 · 节能 · 可靠 - 您的冷链专家</p>
-                    <button className="cta-button">立即咨询</button>
+                    <div className="hero-content">
+                        <h1>泰州优库冷库设备有限公司</h1>
+                        <p>高效 · 节能 · 可靠 - 您的冷链专家</p>
+                        <button className="cta-button">立即咨询</button>
+                    </div>
+                    <div className="location-map">
+                        <img src={chinaMap} alt="Location in China" />
+                    </div>
                 </div>
             </div>
 

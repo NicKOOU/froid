@@ -92,9 +92,6 @@ function Header() {
                                 className="mobile-nav"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <button className="close-menu" onClick={closeMobileMenu}>
-                                    <FaTimes />
-                                </button>
                                 <ul>
                                     <li>
                                         <Link to="/" onClick={closeMobileMenu}>
