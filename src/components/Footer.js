@@ -1,58 +1,57 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaWeixin, FaEnvelope, FaGlobe, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
-import wechat from '../assets/sg-wechat.jpg';
+import { FaPhone, FaEnvelope, FaGlobe, FaMapMarkerAlt, FaUser } from 'react-icons/fa';
+import chinaMap from '../assets/chinaMap.jpg';
 
 function Footer() {
     return (
         <footer className="footer">
             <div className="footer-content">
                 <motion.div
-                    className="footer-section"
+                    className="footer-map"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h3>关于我们</h3>
-                    <p>泰州优库冷库设备有限公司是一家专业从事冷库安装和维护的公司，拥有多年的行业经验。</p>
+                    <img src={chinaMap} alt="Location in China" />
                 </motion.div>
 
                 <motion.div
-                    className="footer-section"
+                    className="footer-contact"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <h3>联系方式</h3>
+                    <h3>联系我们 Contact Us</h3>
                     <ul className="footer-links">
                         <li>
-                            <FaPhone /> 1370-1430-468
+                            <FaUser className="contact-icon" />
+                            <span className="contact-label">联系人:</span>
+                            <span className="contact-value">李经理</span>
                         </li>
                         <li>
-                            <FaMapMarkerAlt /> 泰州市, 江苏省
+                            <FaPhone className="contact-icon" />
+                            <span className="contact-label">手机:</span>
+                            <span className="contact-value">13701430468、13605263288</span>
                         </li>
                         <li>
-                            <FaEnvelope /> info@coolinstall.cn
+                            <FaEnvelope className="contact-icon" />
+                            <span className="contact-label">邮箱:</span>
+                            <span className="contact-value">1004825690@qq.com</span>
+                        </li>
+                        <li>
+                            <FaMapMarkerAlt className="contact-icon" />
+                            <span className="contact-label">销售地址:</span>
+                            <span className="contact-value">泰州市白马镇金马大街</span>
+                        </li>
+                        <li>
+                            <FaGlobe className="contact-icon" />
+                            <span className="contact-label">网址:</span>
+                            <span className="contact-value">www.youkulengku.com</span>
                         </li>
                     </ul>
-                </motion.div>
-
-                <motion.div
-                    className="footer-section"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                    <h3>关注我们</h3>
-                    <div className="social-icons">
-                        <img src={wechat} alt="WeChat QR Code" className="wechat-qr" />
-                        <a href="mailto:info@coolinstall.cn" className="social-link" aria-label="Email">
-                            <FaEnvelope />
-                        </a>
-                    </div>
                 </motion.div>
             </div>
 
@@ -63,7 +62,8 @@ function Footer() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.6 }}
             >
-                <p>© 2025 泰州优库冷库设备有限公司 - 保留所有权利</p>
+                <p>© 2025 泰州优库冷库设备有限公司</p>
+                <p>备案号:苏ICP备17055221号-1 【免责声明】</p>
             </motion.div>
         </footer>
     );

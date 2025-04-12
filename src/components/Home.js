@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Particles from 'react-particles';
 import { loadSlim } from 'tsparticles-slim';
@@ -11,6 +11,20 @@ import chinaMap from '../assets/chinaMap.jpg';
 
 function Home() {
     const [selectedProject, setSelectedProject] = useState(null);
+    const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setShowScrollIndicator(false);
+            } else {
+                setShowScrollIndicator(true);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const particlesInit = async (engine) => {
         await loadSlim(engine);
@@ -50,7 +64,6 @@ function Home() {
         { chinese: "气调冷库", english: "Controlled Atmosphere Storage" },
         { chinese: "科研冷库", english: "Research Cold Storage" },
         { chinese: "物流冷库", english: "Logistics Cold Storage" },
-        { chinese: "速冻冷库", english: "Quick Freezing Storage" }
     ];
 
     const sliderSettings = {
@@ -98,7 +111,13 @@ function Home() {
                     <div className="location-map">
                         <img src={chinaMap} alt="Location in China" />
                     </div>
+
                 </div>
+                {showScrollIndicator && (
+                    <div className="scroll-indicator" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
+                        <div className="arrow"></div>
+                    </div>
+                )}
             </div>
 
 
@@ -111,6 +130,14 @@ function Home() {
                 >
                     我们的服务
                 </motion.h2>
+                <motion.h3
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    Cold Storage Project
+                </motion.h3>
                 <div className="tags-container">
                     {serviceTags.map((tag, index) => (
                         <motion.div
@@ -155,6 +182,23 @@ function Home() {
                             </div>
                         </motion.div>
                     ))}
+                </div>
+            </section>
+
+            <section className="contact-banner">
+                <div className="contact-banner-content">
+                    <div className="contact-banner-text">
+                        <span>售前咨询</span>
+                        <span>-</span>
+                        <span>免费设计</span>
+                        <span>-</span>
+                        <span>专业施工</span>
+                        <span>-</span>
+                        <span>售后服务</span>
+                    </div>
+                    <div className="contact-banner-phone">
+                        <span>1370-1430-468</span>
+                    </div>
                 </div>
             </section>
 

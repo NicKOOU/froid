@@ -51,13 +51,13 @@ function Contact() {
                     variants={itemVariants}
                 >
                     <div className="contact-info-item">
-                        <p>📞 电话: +86 123-456-7890</p>
+                        <p>📞 电话: 1370-1430-468</p>
                     </div>
                     <div className="contact-info-item">
-                        <p>✉️ 邮箱: info@coolinstall.cn</p>
+                        <p>✉️ 邮箱: info@youkucold.com</p>
                     </div>
                     <div className="contact-info-item">
-                        <p>📍 地址: 中国上海市冷库路88号</p>
+                        <p>📍 地址: 泰州优库冷库设备有限公司</p>
                     </div>
                 </motion.div>
             </motion.div>
