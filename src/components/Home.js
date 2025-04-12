@@ -197,7 +197,9 @@ function Home() {
                         <span>售后服务</span>
                     </div>
                     <div className="contact-banner-phone">
-                        <span>1370-1430-468</span>
+                        <span>13701430468</span>
+                        <span>、</span>
+                        <span>13605263288</span>
                     </div>
                 </div>
             </section>

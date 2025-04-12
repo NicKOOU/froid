@@ -51,13 +51,19 @@ function Contact() {
                     variants={itemVariants}
                 >
                     <div className="contact-info-item">
-                        <p>📞 电话: 1370-1430-468</p>
+                        <p>📞 联系人: 李经理</p>
                     </div>
                     <div className="contact-info-item">
-                        <p>✉️ 邮箱: info@youkucold.com</p>
+                        <p>📱 手机: 13701430468、13605263288</p>
                     </div>
                     <div className="contact-info-item">
-                        <p>📍 地址: 泰州优库冷库设备有限公司</p>
+                        <p>✉️ 邮箱: 1004825690@qq.com</p>
+                    </div>
+                    <div className="contact-info-item">
+                        <p>📍 销售地址: 泰州市白马镇金马大街</p>
+                    </div>
+                    <div className="contact-info-item">
+                        <p>🌐 网址: www.youkulengku.com</p>
                     </div>
                 </motion.div>
             </motion.div>
