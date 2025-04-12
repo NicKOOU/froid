@@ -22,13 +22,22 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Attendre que le DOM soit complètement chargé
     const handleLoad = () => {
-      setIsLoaded(true);
+      // Utiliser requestIdleCallback pour le préchargement
+      if (window.requestIdleCallback) {
+        window.requestIdleCallback(() => {
+          setIsLoaded(true);
+        });
+      } else {
+        // Fallback pour les navigateurs qui ne supportent pas requestIdleCallback
+        setTimeout(() => {
+          setIsLoaded(true);
+        }, 0);
+      }
     };
 
     if (document.readyState === 'complete') {
-      setIsLoaded(true);
+      handleLoad();
     } else {
       window.addEventListener('load', handleLoad);
       return () => window.removeEventListener('load', handleLoad);

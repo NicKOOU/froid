@@ -1,25 +1,45 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import contactBg from '../assets/project1.jpg'; // Ajoute une image dans src/assets/
 
 function Contact() {
+    // Utilisation de useMemo pour mémoriser les animations
+    const containerVariants = useMemo(() => ({
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 0.3,
+                staggerChildren: 0.1
+            }
+        }
+    }), []);
+
+    const itemVariants = useMemo(() => ({
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.2
+            }
+        }
+    }), []);
+
     return (
         <section className="contact">
-            <div className="contact-overlay">
-                <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
+            <motion.div
+                className="contact-overlay"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <motion.h2 variants={itemVariants}>
                     联系我们
                 </motion.h2>
                 <motion.form
                     className="contact-form"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    variants={itemVariants}
                 >
                     <input type="text" placeholder="您的姓名" required />
                     <input type="email" placeholder="您的邮箱" required />
@@ -28,10 +48,7 @@ function Contact() {
                 </motion.form>
                 <motion.div
                     className="contact-info"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    variants={itemVariants}
                 >
                     <div className="contact-info-item">
                         <p>📞 电话: +86 123-456-7890</p>
@@ -43,9 +60,9 @@ function Contact() {
                         <p>📍 地址: 中国上海市冷库路88号</p>
                     </div>
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 }
 
-export default Contact;
+export default React.memo(Contact);

@@ -15,6 +15,8 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
     --gradient-primary: linear-gradient(135deg, #40C4FF, #01579B);
     --gradient-secondary: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+    --animation-duration: 0.3s;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -30,7 +32,8 @@ body {
     display: flex;
     flex-direction: column;
     opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
+    animation: fadeIn 0.3s var(--animation-timing) forwards;
+    will-change: opacity;
 }
 
 @keyframes fadeIn {
@@ -40,6 +43,60 @@ body {
     to {
         opacity: 1;
     }
+}
+
+/* Optimisation des animations */
+.hero-overlay,
+.about-content,
+.service-item,
+.project-item,
+.contact-overlay,
+.motion-div {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Accélération des animations */
+.hero-overlay,
+.about-content,
+.service-item,
+.project-item,
+.contact-overlay {
+    transition: all var(--animation-duration) var(--animation-timing) !important;
+}
+
+/* Optimisation mobile */
+@media (max-width: 768px) {
+    .hero-overlay,
+    .about-content,
+    .service-item,
+    .project-item,
+    .contact-overlay,
+    .motion-div {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .service-item:hover,
+    .project-item:hover,
+    .contact-info-item:hover {
+        transform: none !important;
+    }
+}
+
+/* Préchargement des images */
+img {
+    content-visibility: auto;
+    contain: layout style paint;
+}
+
+/* Optimisation des transitions */
+* {
+    transition: all var(--animation-duration) var(--animation-timing);
 }
 
 /* Header */
@@ -290,29 +347,6 @@ body {
     .mobile-nav {
         width: 100%;
         max-width: 300px;
-    }
-
-    .hero-overlay,
-    .about-content,
-    .service-item,
-    .project-item,
-    .contact-overlay {
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
-    }
-
-    .motion-div {
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
-    }
-
-    /* Désactiver les animations de survol sur mobile */
-    .service-item:hover,
-    .project-item:hover,
-    .contact-info-item:hover {
-        transform: none !important;
     }
 }
 
@@ -942,6 +976,7 @@ body {
     background: var(--background-light);
     position: relative;
     overflow: hidden;
+    will-change: transform;
 }
 
 .contact::before {
@@ -953,6 +988,7 @@ body {
     height: 100%;
     background: linear-gradient(135deg, rgba(64, 196, 255, 0.05), rgba(1, 87, 155, 0.05));
     z-index: 0;
+    will-change: opacity;
 }
 
 .contact-overlay {
@@ -966,12 +1002,9 @@ body {
     border: 1px solid rgba(64, 196, 255, 0.2);
     position: relative;
     z-index: 1;
-    transition: all 0.4s ease;
-}
-
-.contact-overlay:hover {
-    box-shadow: 0 20px 50px rgba(64, 196, 255, 0.2);
-    transform: translateY(-5px);
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
 }
 
 .contact h2 {
@@ -981,24 +1014,14 @@ body {
     text-align: center;
     margin-bottom: 40px;
     position: relative;
-}
-
-.contact h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
+    will-change: transform, opacity;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    will-change: transform, opacity;
 }
 
 .contact-form input,
@@ -1008,8 +1031,9 @@ body {
     border-radius: 12px;
     font-size: 1rem;
     background: rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     color: var(--text-primary);
+    will-change: transform, opacity;
 }
 
 .contact-form input:focus,
@@ -1034,13 +1058,9 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     margin-top: 10px;
-}
-
-.contact-form button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(64, 196, 255, 0.4);
+    will-change: transform, opacity;
 }
 
 .contact-info {
@@ -1049,13 +1069,15 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
+    will-change: transform, opacity;
 }
 
 .contact-info-item {
     padding: 20px;
     background: rgba(64, 196, 255, 0.1);
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    will-change: transform, opacity;
 }
 
 .contact-info-item:hover {
@@ -1090,6 +1112,16 @@ body {
     .contact-info {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+
+    /* Désactiver les animations sur mobile */
+    .contact-overlay,
+    .contact-form,
+    .contact-info,
+    .contact-info-item {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
     }
 }
 
