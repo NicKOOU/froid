@@ -4,9 +4,13 @@ import Particles from 'react-particles';
 import { loadSlim } from 'tsparticles-slim';
 import Slider from 'react-slick';
 import heroImage from '../assets/project1.jpg';
-import projectImage from '../assets/project1.jpg';
-import projectImage2 from '../assets/project2.jpg';
-import projectImage3 from '../assets/project3.jpeg';
+import projectImage from '../assets/泰州中医院.png';
+import projectImage2 from '../assets/江苏艾兰德营养品有限公司.jpg';
+import projectImage3 from '../assets/湖州农产品批发市场.png';
+import projectImage4 from '../assets/王氏高淳水产养殖基地.jpg';
+import projectImage5 from '../assets/兴化周氏食品有限公司.jpg';
+import projectImage6 from '../assets/苏州菜甄鲜食品有限公司.jpg';
+import projectImage7 from '../assets/江苏百汇农业发展有限公司.jpg';
 import chinaMap from '../assets/chinaMap.jpg';
 
 function Home() {
@@ -33,37 +37,59 @@ function Home() {
     const projects = [
         {
             id: 1,
-            title: '食品冷库 - 上海',
-            desc: '高效冷冻食品储存解决方案',
+            title: '泰州中医院',
             img: projectImage,
             gallery: [projectImage, projectImage, projectImage]
         },
         {
             id: 2,
-            title: '工业冷库 - 北京',
-            desc: '大规模工业冷藏设施',
+            title: '江苏艾兰德营养品有限公司',
             img: projectImage2,
             gallery: [projectImage2, projectImage2, projectImage2]
         },
         {
             id: 3,
-            title: '医药冷库 - 广州',
-            desc: '医药冷链储存解决方案',
+            title: '湖州农产品批发市场',
             img: projectImage3,
             gallery: [projectImage3, projectImage3, projectImage3]
+        },
+        {
+            id: 4,
+            title: '王氏高淳水产养殖基地',
+            img: projectImage4,
+            gallery: [projectImage3, projectImage3, projectImage3]
+        },
+        {
+            id: 5,
+            title: '兴化周氏食品有限公司',
+            img: projectImage5,
+            gallery: [projectImage3, projectImage3, projectImage3]
+        },
+        {
+            id: 6,
+            title: '苏州菜甄鲜食品有限公司',
+            img: projectImage6,
+            gallery: [projectImage3, projectImage3, projectImage3]
+        },
+        {
+            id: 7,
+            title: '江苏百汇农业发展有限公司',
+            img: projectImage7,
+            gallery: [projectImage3, projectImage3, projectImage3]
         }
+
     ];
 
     const serviceTags = [
-        { chinese: "冷库工程", english: "Cold Storage Project" },
-        { chinese: "食品冷库", english: "Food Cold Storage" },
-        { chinese: "医药冷库", english: "Medical Cold Storage" },
-        { chinese: "餐饮冷库", english: "Catering Cold Storage" },
-        { chinese: "防爆冷库", english: "Explosion-proof Cold Storage" },
-        { chinese: "工业冷库", english: "Industrial Cold Storage" },
-        { chinese: "气调冷库", english: "Controlled Atmosphere Storage" },
-        { chinese: "科研冷库", english: "Research Cold Storage" },
-        { chinese: "物流冷库", english: "Logistics Cold Storage" },
+        { chinese: "冷库工程" },
+        { chinese: "食品冷库" },
+        { chinese: "医药冷库" },
+        { chinese: "餐饮冷库" },
+        { chinese: "防爆冷库" },
+        { chinese: "工业冷库" },
+        { chinese: "气调冷库" },
+        { chinese: "科研冷库" },
+        { chinese: "物流冷库" }
     ];
 
     const sliderSettings = {
@@ -104,14 +130,31 @@ function Home() {
                 />
                 <div className="hero-overlay">
                     <div className="hero-content">
-                        <h1>泰州优库冷库设备有限公司</h1>
-                        <p>高效 · 节能 · 可靠 - 您的冷链专家</p>
-                        <button className="cta-button">立即咨询</button>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            泰州优库冷库设备有限公司
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                        >
+                            高效 · 节能 · 可靠 - 您的冷链专家
+                        </motion.p>
+                        <motion.button
+                            className="cta-button"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            立即咨询
+                        </motion.button>
                     </div>
-                    <div className="location-map">
-                        <img src={chinaMap} alt="Location in China" />
-                    </div>
-
                 </div>
                 {showScrollIndicator && (
                     <div className="scroll-indicator" onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
