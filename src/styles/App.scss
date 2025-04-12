@@ -51,11 +51,16 @@ body {
 .service-item,
 .project-item,
 .contact-overlay,
-.motion-div {
+.motion-div,
+.footer-map,
+.footer-contact,
+.footer-bottom {
     will-change: transform, opacity;
     backface-visibility: hidden;
     transform: translateZ(0);
     -webkit-font-smoothing: antialiased;
+    -webkit-transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 /* Accélération des animations */
@@ -74,11 +79,18 @@ body {
     .service-item,
     .project-item,
     .contact-overlay,
-    .motion-div {
+    .motion-div,
+    .footer-map,
+    .footer-contact,
+    .footer-bottom {
         opacity: 1 !important;
         transform: none !important;
         animation: none !important;
         transition: none !important;
+        will-change: auto;
+        backface-visibility: visible;
+        -webkit-transform-style: flat;
+        perspective: none;
     }
 
     .service-item:hover,
@@ -86,17 +98,59 @@ body {
     .contact-info-item:hover {
         transform: none !important;
     }
+
+    /* Désactiver les animations sur mobile */
+    .motion-div {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    /* Optimiser le rendu des images */
+    img {
+        content-visibility: auto;
+        contain: layout style paint;
+        will-change: auto;
+    }
+
+    /* Désactiver les transitions sur mobile */
+    * {
+        transition: none !important;
+    }
+
+    .header-container {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        min-width: 180px;
+        height: 50px;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .mobile-nav {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 /* Préchargement des images */
 img {
     content-visibility: auto;
     contain: layout style paint;
+    will-change: auto;
 }
 
 /* Optimisation des transitions */
 * {
     transition: all var(--animation-duration) var(--animation-timing);
+    will-change: auto;
 }
 
 /* Header */
