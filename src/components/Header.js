@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaHome, FaInfoCircle, FaBriefcase, FaEnvelope, FaTimes } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaBriefcase, FaEnvelope, FaTimes, FaNewspaper } from 'react-icons/fa';
 import logo from '../assets/youkuNew.jpg';
 
 function Header() {
@@ -66,6 +66,12 @@ function Header() {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/news">
+                                <FaNewspaper className="nav-icon" />
+                                <span>新闻资讯</span>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/contact">
                                 <FaEnvelope className="nav-icon" />
                                 <span>联系我们</span>
@@ -109,6 +115,12 @@ function Header() {
                                         <Link to="/services" onClick={closeMobileMenu}>
                                             <FaBriefcase className="nav-icon" />
                                             <span>服务</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/news" onClick={closeMobileMenu}>
+                                            <FaNewspaper className="nav-icon" />
+                                            <span>新闻资讯</span>
                                         </Link>
                                     </li>
                                     <li>
