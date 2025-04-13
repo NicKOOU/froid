@@ -27,10 +27,6 @@ const 医药冷库Files = 医药冷库Images.keys().map(image => 医药冷库Ima
 const 餐饮冷库Images = require.context('../assets/餐饮冷库/', false, /\.(png|jpe?g)$/);
 const 餐饮冷库Files = 餐饮冷库Images.keys().map(image => 餐饮冷库Images(image));
 
-// 防爆冷库 images
-const 防爆冷库Images = require.context('../assets/防爆冷库/', false, /\.(png|jpe?g)$/);
-const 防爆冷库Files = 防爆冷库Images.keys().map(image => 防爆冷库Images(image));
-
 // 工业冷库 images
 const 工业冷库Images = require.context('../assets/工业冷库/', false, /\.(png|jpe?g)$/);
 const 工业冷库Files = 工业冷库Images.keys().map(image => 工业冷库Images(image));
@@ -129,12 +125,6 @@ function Home() {
             title: "餐饮冷库",
             img: 餐饮冷库Files.length > 0 ? 餐饮冷库Files[0] : projectImage3,
             gallery: 餐饮冷库Files.length > 0 ? 餐饮冷库Files : [projectImage3, projectImage4, projectImage5]
-        },
-        {
-            id: 4,
-            title: "防爆冷库",
-            img: 防爆冷库Files.length > 0 ? 防爆冷库Files[0] : projectImage4,
-            gallery: 防爆冷库Files.length > 0 ? 防爆冷库Files : [projectImage4, projectImage5, projectImage6]
         },
         {
             id: 5,
@@ -261,7 +251,7 @@ function Home() {
 小型冷库常采用保温地板，地面保养不可忽视：
 •	严禁地面积水结冰，以免影响人员操作安全；
 •	如遇结冰情况，禁止用硬物敲打清除，以防损坏保温层。
-通过科学规范的保养方式，不仅可以延长冷库使用寿命，更能保障冷藏食品与货物的质量。更多冷库维护知识，欢迎关注“优库冷库制冷设备有限公司”官网，我们将持续为您分享专业资讯。`
+通过科学规范的保养方式，不仅可以延长冷库使用寿命，更能保障冷藏食品与货物的质量。更多冷库维护知识，欢迎关注"优库冷库制冷设备有限公司"官网，我们将持续为您分享专业资讯。`
         },
         {
             question: "冷库中异味的成因与应对措施",
@@ -302,7 +292,7 @@ function Home() {
 	每立方米用50~100克食醋配比，喷洒后关闭库门；
 	鼓风循环12~24小时后，再通风排出醋味。
 
-通过以上管理与处理方法，可以有效避免冷库中异味的产生，确保食品安全和冷库卫生。如需了解更多冷库使用与维护知识，欢迎持续关注“优库冷库制冷设备有限公司”官方网站资讯栏目。`
+通过以上管理与处理方法，可以有效避免冷库中异味的产生，确保食品安全和冷库卫生。如需了解更多冷库使用与维护知识，欢迎持续关注"优库冷库制冷设备有限公司"官方网站资讯栏目。`
         }
     ];
 
@@ -375,7 +365,7 @@ function Home() {
                     我们的服务
                 </motion.h2>
                 <div className="projects-container">
-                    {services.map((service) => (
+                    {services.slice(0, 4).map((service) => (
                         <motion.div
                             key={service.id}
                             className="project-card"
@@ -392,6 +382,21 @@ function Home() {
                         </motion.div>
                     ))}
                 </div>
+                <motion.div
+                    className="view-more"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                >
+                    <Link
+                        to="/services"
+                        className="view-more-button"
+                    >
+                        查看更多
+                        <span className="arrow">→</span>
+                    </Link>
+                </motion.div>
             </section>
 
             <section className="projects-grid">
@@ -527,11 +532,12 @@ function Home() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.8 }}
                     >
-                        <Link to="/news">
-                            <button className="view-more-button">
-                                查看更多
-                                <span className="arrow">→</span>
-                            </button>
+                        <Link
+                            to="/news"
+                            className="view-more-button"
+                        >
+                            查看更多
+                            <span className="arrow">→</span>
                         </Link>
                     </motion.div>
                 </motion.div>
@@ -545,41 +551,21 @@ function Home() {
                         <Slider {...sliderSettings}>
                             {selectedService.gallery.map((image, index) => (
                                 <div key={index}>
-                                    <img src={image} alt={`${selectedService.title} - ${index + 1}`} className="carousel-image" />
+                                    <img
+                                        src={image}
+                                        alt={`${selectedService.title} - ${index + 1}`}
+                                        className="carousel-image"
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = projectImage; // Use a fallback image on error
+                                        }}
+                                    />
                                 </div>
                             ))}
                         </Slider>
                     </div>
                 </div>
             )}
-
-            <style jsx>{`
-                @media (max-width: 768px) {
-                    .projects-grid h2 {
-                        font-size: 1.5rem;
-                    }
-                    .project-info h3 {
-                        font-size: 0.7rem;
-                        margin: 5px 0;
-                    }
-                    .project-info {
-                        padding: 8px 5px;
-                        min-height: unset;
-                    }
-                    .projects-container {
-                        width: 95%;
-                        max-width: 100%;
-                        margin: 0 auto;
-                        padding: 0 5px;
-                    }
-                    .project-card {
-                        margin: 5px;
-                    }
-                    .projects-grid {
-                        padding: 30px 5px;
-                    }
-                }
-            `}</style>
         </div>
     );
 }

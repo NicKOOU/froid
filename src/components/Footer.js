@@ -43,7 +43,7 @@ function Footer() {
                         </li>
                         <li>
                             <FaMapMarkerAlt className="contact-icon" />
-                            <span className="contact-label">销售地址:</span>
+                            <span className="contact-label">地址:</span>
                             <span className="contact-value">泰州市白马镇金马大街</span>
                         </li>
                         <li>
