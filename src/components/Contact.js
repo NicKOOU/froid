@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import contactBg from '../assets/project1.jpg'; // Ajoute une image dans src/assets/
+import wechatQR from '../assets/sg-wechat.jpg'; // Assurez-vous d'ajouter une image QR code WeChat dans src/assets/
 
 function Contact() {
     // Utilisation de useMemo pour mémoriser les animations
@@ -34,18 +34,19 @@ function Contact() {
                 initial="hidden"
                 animate="visible"
             >
-                <motion.h2 variants={itemVariants}>
+                <motion.h2 variants={itemVariants} style={{ textAlign: 'center', marginBottom: '2rem', color: '#01579B' }}>
                     联系我们
                 </motion.h2>
-                <motion.form
-                    className="contact-form"
+
+                <motion.div
+                    className="wechat-contact"
                     variants={itemVariants}
                 >
-                    <input type="text" placeholder="您的姓名" required />
-                    <input type="email" placeholder="您的邮箱" required />
-                    <textarea placeholder="您的留言" rows="5" required></textarea>
-                    <button type="submit" className="cta-button">发送</button>
-                </motion.form>
+                    <img src={wechatQR} alt="WeChat QR Code" className="wechat-qr" />
+                    <p>请扫描二维码添加我们的微信</p>
+                    <p>Scan QR code to add us on WeChat</p>
+                </motion.div>
+
                 <motion.div
                     className="contact-info"
                     variants={itemVariants}
@@ -55,9 +56,6 @@ function Contact() {
                     </div>
                     <div className="contact-info-item">
                         <p>📱 手机: 13701430468、13605263288</p>
-                    </div>
-                    <div className="contact-info-item">
-                        <p>✉️ 邮箱: 1004825690@qq.com</p>
                     </div>
                     <div className="contact-info-item">
                         <p>📍 销售地址: 泰州市白马镇金马大街</p>

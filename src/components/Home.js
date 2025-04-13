@@ -274,16 +274,18 @@ function Home() {
                         >
                             高效 · 节能 · 可靠 - 您的冷链专家
                         </motion.p>
-                        <motion.button
-                            className="cta-button"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            立即咨询
-                        </motion.button>
+                        <Link to="/contact">
+                            <motion.button
+                                className="cta-button"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.4 }}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                立即咨询
+                            </motion.button>
+                        </Link>
                     </div>
                 </div>
             </div>
