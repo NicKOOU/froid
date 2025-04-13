@@ -15,7 +15,7 @@ import projectImage7 from '../assets/江苏百汇农业发展有限公司.jpg';
 import chinaMap from '../assets/chinaMap.jpg';
 
 function Home() {
-    const [selectedProject, setSelectedProject] = useState(null);
+    const [selectedService, setSelectedService] = useState(null);
     const [showScrollIndicator, setShowScrollIndicator] = useState(true);
     const [openFaqId, setOpenFaqId] = useState(null);
 
@@ -41,57 +41,94 @@ function Home() {
             id: 1,
             title: '泰州中医院',
             img: projectImage,
-            gallery: [projectImage, projectImage, projectImage]
         },
         {
             id: 2,
             title: '江苏艾兰德营养品有限公司',
             img: projectImage2,
-            gallery: [projectImage2, projectImage2, projectImage2]
         },
         {
             id: 3,
             title: '湖州农产品批发市场',
             img: projectImage3,
-            gallery: [projectImage3, projectImage3, projectImage3]
         },
         {
             id: 4,
             title: '王氏高淳水产养殖基地',
             img: projectImage4,
-            gallery: [projectImage3, projectImage3, projectImage3]
         },
         {
             id: 5,
             title: '兴化周氏食品有限公司',
             img: projectImage5,
-            gallery: [projectImage3, projectImage3, projectImage3]
         },
         {
             id: 6,
             title: '苏州菜甄鲜食品有限公司',
             img: projectImage6,
-            gallery: [projectImage3, projectImage3, projectImage3]
         },
         {
             id: 7,
             title: '江苏百汇农业发展有限公司',
             img: projectImage7,
-            gallery: [projectImage3, projectImage3, projectImage3]
         }
-
     ];
 
-    const serviceTags = [
-        { chinese: "冷库工程" },
-        { chinese: "食品冷库" },
-        { chinese: "医药冷库" },
-        { chinese: "餐饮冷库" },
-        { chinese: "防爆冷库" },
-        { chinese: "工业冷库" },
-        { chinese: "气调冷库" },
-        { chinese: "科研冷库" },
-        { chinese: "物流冷库" }
+    const services = [
+        {
+            id: 1,
+            title: "冷库工程",
+            img: projectImage,
+            gallery: [projectImage, projectImage2, projectImage3]
+        },
+        {
+            id: 2,
+            title: "食品冷库",
+            img: projectImage2,
+            gallery: [projectImage2, projectImage3, projectImage4]
+        },
+        {
+            id: 3,
+            title: "医药冷库",
+            img: projectImage3,
+            gallery: [projectImage3, projectImage4, projectImage5]
+        },
+        {
+            id: 4,
+            title: "餐饮冷库",
+            img: projectImage4,
+            gallery: [projectImage4, projectImage5, projectImage6]
+        },
+        {
+            id: 5,
+            title: "防爆冷库",
+            img: projectImage5,
+            gallery: [projectImage5, projectImage6, projectImage7]
+        },
+        {
+            id: 6,
+            title: "工业冷库",
+            img: projectImage6,
+            gallery: [projectImage6, projectImage7, projectImage]
+        },
+        {
+            id: 7,
+            title: "气调冷库",
+            img: projectImage7,
+            gallery: [projectImage7, projectImage, projectImage2]
+        },
+        {
+            id: 8,
+            title: "科研冷库",
+            img: projectImage,
+            gallery: [projectImage, projectImage3, projectImage5]
+        },
+        {
+            id: 9,
+            title: "物流冷库",
+            img: projectImage2,
+            gallery: [projectImage2, projectImage4, projectImage6]
+        }
     ];
 
     const sliderSettings = {
@@ -290,8 +327,7 @@ function Home() {
                 </div>
             </div>
 
-
-            <section className="projects-tags">
+            <section className="projects-grid">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -300,26 +336,21 @@ function Home() {
                 >
                     我们的服务
                 </motion.h2>
-                <motion.h3
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    Cold Storage Project
-                </motion.h3>
-                <div className="tags-container">
-                    {serviceTags.map((tag, index) => (
+                <div className="projects-container">
+                    {services.map((service) => (
                         <motion.div
-                            key={index}
-                            className="tag-item"
+                            key={service.id}
+                            className="project-card"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
+                            transition={{ duration: 0.4 }}
+                            onClick={() => setSelectedService(service)}
                         >
-                            <span>{tag.chinese}</span>
-                            <span>{tag.english}</span>
+                            <img src={service.img} alt={service.title} className="project-image" />
+                            <div className="project-info">
+                                <h3>{service.title}</h3>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -343,7 +374,6 @@ function Home() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4 }}
-                            onClick={() => setSelectedProject(project)}
                         >
                             <img src={project.img} alt={project.title} className="project-image" />
                             <div className="project-info">
@@ -469,21 +499,49 @@ function Home() {
                 </motion.div>
             </section>
 
-            {selectedProject && (
-                <div className="carousel-modal" onClick={() => setSelectedProject(null)}>
+            {selectedService && (
+                <div className="carousel-modal" onClick={() => setSelectedService(null)}>
                     <div className="carousel-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="close-button" onClick={() => setSelectedProject(null)}>✕</button>
-                        <h3>{selectedProject.title}</h3>
+                        <button className="close-button" onClick={() => setSelectedService(null)}>✕</button>
+                        <h3>{selectedService.title}</h3>
                         <Slider {...sliderSettings}>
-                            {selectedProject.gallery.map((image, index) => (
+                            {selectedService.gallery.map((image, index) => (
                                 <div key={index}>
-                                    <img src={image} alt={`${selectedProject.title} - ${index + 1}`} className="carousel-image" />
+                                    <img src={image} alt={`${selectedService.title} - ${index + 1}`} className="carousel-image" />
                                 </div>
                             ))}
                         </Slider>
                     </div>
                 </div>
             )}
+
+            <style jsx>{`
+                @media (max-width: 768px) {
+                    .projects-grid h2 {
+                        font-size: 1.5rem;
+                    }
+                    .project-info h3 {
+                        font-size: 0.7rem;
+                        margin: 5px 0;
+                    }
+                    .project-info {
+                        padding: 8px 5px;
+                        min-height: unset;
+                    }
+                    .projects-container {
+                        width: 95%;
+                        max-width: 100%;
+                        margin: 0 auto;
+                        padding: 0 5px;
+                    }
+                    .project-card {
+                        margin: 5px;
+                    }
+                    .projects-grid {
+                        padding: 30px 5px;
+                    }
+                }
+            `}</style>
         </div>
     );
 }
