@@ -60,12 +60,6 @@ function Header() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/services">
-                                <FaBriefcase className="nav-icon" />
-                                <span>服务</span>
-                            </Link>
-                        </li>
-                        <li>
                             <Link to="/news">
                                 <FaNewspaper className="nav-icon" />
                                 <span>新闻资讯</span>
@@ -75,6 +69,12 @@ function Header() {
                             <Link to="/contact">
                                 <FaEnvelope className="nav-icon" />
                                 <span>联系我们</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/services">
+                                <FaBriefcase className="nav-icon" />
+                                <span>我们的服务</span>
                             </Link>
                         </li>
                     </ul>
@@ -112,12 +112,6 @@ function Header() {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="/services" onClick={closeMobileMenu}>
-                                            <FaBriefcase className="nav-icon" />
-                                            <span>服务</span>
-                                        </Link>
-                                    </li>
-                                    <li>
                                         <Link to="/news" onClick={closeMobileMenu}>
                                             <FaNewspaper className="nav-icon" />
                                             <span>新闻资讯</span>
@@ -127,6 +121,12 @@ function Header() {
                                         <Link to="/contact" onClick={closeMobileMenu}>
                                             <FaEnvelope className="nav-icon" />
                                             <span>联系我们</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/services" onClick={closeMobileMenu}>
+                                            <FaBriefcase className="nav-icon" />
+                                            <span>我们的服务</span>
                                         </Link>
                                     </li>
                                 </ul>
