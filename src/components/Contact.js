@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import wechatQR from '../assets/sg-wechat.jpg'; // Assurez-vous d'ajouter une image QR code WeChat dans src/assets/
+import wechatQR from '../assets/b-wechat.jpg'; // Assurez-vous d'ajouter une image QR code WeChat dans src/assets/
 
 function Contact() {
     // Utilisation de useMemo pour mémoriser les animations
