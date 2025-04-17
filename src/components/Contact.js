@@ -44,7 +44,6 @@ function Contact() {
                 >
                     <img src={wechatQR} alt="WeChat QR Code" className="wechat-qr" />
                     <p>请扫描二维码添加我们的微信</p>
-                    <p>Scan QR code to add us on WeChat</p>
                 </motion.div>
 
                 <motion.div
@@ -61,7 +60,7 @@ function Contact() {
                         <p>📍 销售地址: 泰州市白马镇金马大街</p>
                     </div>
                     <div className="contact-info-item">
-                        <p>🌐 网址: www.youkulengku.com</p>
+                        <p>🌐 网址: www.tzlk888.com</p>
                     </div>
                 </motion.div>
             </motion.div>
