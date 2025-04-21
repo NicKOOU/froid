@@ -60,7 +60,7 @@ function Contact() {
                         <p>📍 销售地址: 泰州市白马镇金马大街</p>
                     </div>
                     <div className="contact-info-item">
-                        <p>🌐 网址: www.tzlk888.com</p>
+                        <p>🌐 网址: www.youkulengku.com/</p>
                     </div>
                 </motion.div>
             </motion.div>
