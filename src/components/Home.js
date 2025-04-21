@@ -382,6 +382,25 @@ function Home() {
                         </motion.div>
                     ))}
                 </div>
+
+                <style jsx>{`
+                    @media (max-width: 768px) {
+                        .project-card {
+                            height: 180px;
+                        }
+                        .project-image {
+                            height: 150px;
+                        }
+                        .project-info {
+                            padding: 5px;
+                        }
+                        .project-info h3 {
+                            font-size: 12px;
+                            margin-bottom: 0;
+                        }
+                    }
+                `}</style>
+
                 <motion.div
                     className="view-more"
                     initial={{ opacity: 0 }}
@@ -426,6 +445,34 @@ function Home() {
                         </motion.div>
                     ))}
                 </div>
+
+                <style jsx>{`
+                    @media (max-width: 768px) {
+                        .project-card {
+                            height: 180px;
+                        }
+                        .project-image {
+                            height: 140px;
+                        }
+                        .project-info {
+                            padding: 5px;
+                        }
+                        .project-info h3 {
+                            font-size: 12px;
+                            margin-bottom: 2px;
+                        }
+                        .project-info p {
+                            font-size: 10px;
+                            line-height: 1.2;
+                            max-height: 25px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                        }
+                    }
+                `}</style>
             </section>
 
             <section className="contact-banner">
