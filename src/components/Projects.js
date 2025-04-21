@@ -87,7 +87,7 @@ function Projects() {
                 ))}
             </div>
 
-            <style jsx>{`
+            <style>{`
                 .projects-page {
                     padding: 60px 0;
                     background-color: #f9f9f9;

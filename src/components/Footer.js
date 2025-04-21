@@ -49,7 +49,7 @@ function Footer() {
                         <li>
                             <FaGlobe className="contact-icon" />
                             <span className="contact-label">网址:</span>
-                            <span className="contact-value">www.tzlk888.com</span>
+                            <span className="contact-value">www.youkulengku.com</span>
                         </li>
                     </ul>
                 </motion.div>

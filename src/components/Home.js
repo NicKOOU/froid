@@ -383,7 +383,7 @@ function Home() {
                     ))}
                 </div>
 
-                <style jsx>{`
+                <style>{`
                     @media (max-width: 768px) {
                         .project-card {
                             height: 180px;
@@ -446,7 +446,7 @@ function Home() {
                     ))}
                 </div>
 
-                <style jsx>{`
+                <style>{`
                     @media (max-width: 768px) {
                         .project-card {
                             height: 180px;
