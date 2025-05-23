@@ -63,7 +63,7 @@ function Footer() {
                 transition={{ duration: 0.8, delay: 0.6 }}
             >
                 <p>© 2025 泰州优库冷库设备有限公司</p>
-                <p>备案号:苏ICP</p>
+                <p>备案号:苏ICP备17055221号-2</p>
             </motion.div>
         </footer>
     );
